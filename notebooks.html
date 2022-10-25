@@ -1,0 +1,1867 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Perangkingan Kalimat Berita dengan Method Page Rank &#8212; My sample book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="prev" title="Markdown Files" href="markdown.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Perangkingan Kalimat Berita dengan Method Page Rank
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/notebooks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/notebooks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Perangkingan Kalimat Berita dengan Method Page Rank</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="perangkingan-kalimat-berita-dengan-method-page-rank">
+<h1>Perangkingan Kalimat Berita dengan Method Page Rank<a class="headerlink" href="#perangkingan-kalimat-berita-dengan-method-page-rank" title="Permalink to this headline">#</a></h1>
+<p><strong>Penjelasan Scrapy</strong></p>
+<p>Scrapy adalah web crawling dan web scraping framework tingkat tinggi yang cepat, digunakan untuk merayapi situs web dan mengekstrak data terstruktur dari halaman mereka. Ini dapat digunakan untuk berbagai tujuan, mulai dari penambangan data hingga pemantauan dan pengujian otomatis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install scrapy
+<span class="o">!</span>pip install crochet
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: scrapy in /usr/local/lib/python3.7/dist-packages (2.7.0)
+Requirement already satisfied: protego&gt;=0.1.15 in /usr/local/lib/python3.7/dist-packages (from scrapy) (0.2.1)
+Requirement already satisfied: PyDispatcher&gt;=2.0.5 in /usr/local/lib/python3.7/dist-packages (from scrapy) (2.0.6)
+Requirement already satisfied: lxml&gt;=4.3.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (4.9.1)
+Requirement already satisfied: tldextract in /usr/local/lib/python3.7/dist-packages (from scrapy) (3.4.0)
+Requirement already satisfied: parsel&gt;=1.5.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (1.6.0)
+Requirement already satisfied: service-identity&gt;=18.1.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (21.1.0)
+Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from scrapy) (21.3)
+Requirement already satisfied: cssselect&gt;=0.9.1 in /usr/local/lib/python3.7/dist-packages (from scrapy) (1.1.0)
+Requirement already satisfied: itemloaders&gt;=1.0.1 in /usr/local/lib/python3.7/dist-packages (from scrapy) (1.0.6)
+Requirement already satisfied: pyOpenSSL&gt;=21.0.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (22.1.0)
+Requirement already satisfied: w3lib&gt;=1.17.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (2.0.1)
+Requirement already satisfied: itemadapter&gt;=0.1.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (0.7.0)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.7/dist-packages (from scrapy) (57.4.0)
+Requirement already satisfied: cryptography&gt;=3.3 in /usr/local/lib/python3.7/dist-packages (from scrapy) (38.0.1)
+Requirement already satisfied: Twisted&gt;=18.9.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (22.8.0)
+Requirement already satisfied: zope.interface&gt;=5.1.0 in /usr/local/lib/python3.7/dist-packages (from scrapy) (5.5.0)
+Requirement already satisfied: queuelib&gt;=1.4.2 in /usr/local/lib/python3.7/dist-packages (from scrapy) (1.6.2)
+Requirement already satisfied: cffi&gt;=1.12 in /usr/local/lib/python3.7/dist-packages (from cryptography&gt;=3.3-&gt;scrapy) (1.15.1)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.7/dist-packages (from cffi&gt;=1.12-&gt;cryptography&gt;=3.3-&gt;scrapy) (2.21)
+Requirement already satisfied: jmespath&gt;=0.9.5 in /usr/local/lib/python3.7/dist-packages (from itemloaders&gt;=1.0.1-&gt;scrapy) (1.0.1)
+Requirement already satisfied: six&gt;=1.6.0 in /usr/local/lib/python3.7/dist-packages (from parsel&gt;=1.5.0-&gt;scrapy) (1.15.0)
+Requirement already satisfied: pyasn1 in /usr/local/lib/python3.7/dist-packages (from service-identity&gt;=18.1.0-&gt;scrapy) (0.4.8)
+Requirement already satisfied: attrs&gt;=19.1.0 in /usr/local/lib/python3.7/dist-packages (from service-identity&gt;=18.1.0-&gt;scrapy) (21.4.0)
+Requirement already satisfied: pyasn1-modules in /usr/local/lib/python3.7/dist-packages (from service-identity&gt;=18.1.0-&gt;scrapy) (0.2.8)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: incremental&gt;=21.3.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=18.9.0-&gt;scrapy) (22.10.0)
+Requirement already satisfied: Automat&gt;=0.8.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=18.9.0-&gt;scrapy) (20.2.0)
+Requirement already satisfied: constantly&gt;=15.1 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=18.9.0-&gt;scrapy) (15.1.0)
+Requirement already satisfied: hyperlink&gt;=17.1.1 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=18.9.0-&gt;scrapy) (21.0.0)
+Requirement already satisfied: typing-extensions&gt;=3.6.5 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=18.9.0-&gt;scrapy) (4.1.1)
+Requirement already satisfied: idna&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from hyperlink&gt;=17.1.1-&gt;Twisted&gt;=18.9.0-&gt;scrapy) (2.10)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging-&gt;scrapy) (3.0.9)
+Requirement already satisfied: filelock&gt;=3.0.8 in /usr/local/lib/python3.7/dist-packages (from tldextract-&gt;scrapy) (3.8.0)
+Requirement already satisfied: requests&gt;=2.1.0 in /usr/local/lib/python3.7/dist-packages (from tldextract-&gt;scrapy) (2.23.0)
+Requirement already satisfied: requests-file&gt;=1.4 in /usr/local/lib/python3.7/dist-packages (from tldextract-&gt;scrapy) (1.5.1)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.1.0-&gt;tldextract-&gt;scrapy) (2022.9.24)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.1.0-&gt;tldextract-&gt;scrapy) (1.24.3)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.1.0-&gt;tldextract-&gt;scrapy) (3.0.4)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: crochet in /usr/local/lib/python3.7/dist-packages (2.0.0)
+Requirement already satisfied: wrapt in /usr/local/lib/python3.7/dist-packages (from crochet) (1.14.1)
+Requirement already satisfied: Twisted&gt;=16.0 in /usr/local/lib/python3.7/dist-packages (from crochet) (22.8.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: zope.interface&gt;=4.4.2 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (5.5.0)
+Requirement already satisfied: attrs&gt;=19.2.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (21.4.0)
+Requirement already satisfied: hyperlink&gt;=17.1.1 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (21.0.0)
+Requirement already satisfied: typing-extensions&gt;=3.6.5 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (4.1.1)
+Requirement already satisfied: incremental&gt;=21.3.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (22.10.0)
+Requirement already satisfied: constantly&gt;=15.1 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (15.1.0)
+Requirement already satisfied: Automat&gt;=0.8.0 in /usr/local/lib/python3.7/dist-packages (from Twisted&gt;=16.0-&gt;crochet) (20.2.0)
+Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from Automat&gt;=0.8.0-&gt;Twisted&gt;=16.0-&gt;crochet) (1.15.0)
+Requirement already satisfied: idna&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from hyperlink&gt;=17.1.1-&gt;Twisted&gt;=16.0-&gt;crochet) (2.10)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.7/dist-packages (from zope.interface&gt;=4.4.2-&gt;Twisted&gt;=16.0-&gt;crochet) (57.4.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">from</span> <span class="nn">scrapy.crawler</span> <span class="kn">import</span> <span class="n">CrawlerRunner</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">crochet</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">wait_for</span>
+<span class="n">setup</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">QuotesToCsv</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;MJKQuotesToCsv&quot;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;https://nasional.tempo.co/read/1643890/jokowi-lantik-heru-budi-hartono-gantikan-anies-baswedan-senin-pekan-depan&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">custom_settings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;ITEM_PIPELINES&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;__main__.ExtractFirstLine&#39;</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;FEEDS&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;news.csv&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;overwrite&#39;</span><span class="p">:</span> <span class="kc">True</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;parse data from urls&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;#isi &gt; p&#39;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;news&#39;</span><span class="p">:</span> <span class="n">quote</span><span class="o">.</span><span class="n">extract</span><span class="p">()}</span>
+
+
+<span class="k">class</span> <span class="nc">ExtractFirstLine</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;text processing&quot;&quot;&quot;</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">item</span><span class="p">)[</span><span class="s2">&quot;news&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="n">first_line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__remove_html_tags__</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;news&#39;</span><span class="p">:</span> <span class="n">first_line</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__remove_html_tags__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;remove html tags from string&quot;&quot;&quot;</span>
+        <span class="n">html_tags</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;&lt;.*?&gt;&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">html_tags</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="nd">@wait_for</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">run_spider</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;run spider with MJKQuotesToCsv&quot;&quot;&quot;</span>
+    <span class="n">crawler</span> <span class="o">=</span> <span class="n">CrawlerRunner</span><span class="p">()</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">crawler</span><span class="o">.</span><span class="n">crawl</span><span class="p">(</span><span class="n">QuotesToCsv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">d</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run_spider</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:twisted:/usr/local/lib/python3.7/dist-packages/scrapy/utils/request.py:231: scrapy.exceptions.ScrapyDeprecationWarning: &#39;2.6&#39; is a deprecated value for the &#39;REQUEST_FINGERPRINTER_IMPLEMENTATION&#39; setting.
+
+It is also the default value. In other words, it is normal to get this warning if you have not defined a value for the &#39;REQUEST_FINGERPRINTER_IMPLEMENTATION&#39; setting. This is so for backward compatibility reasons, but it will change in a future version of Scrapy.
+
+See the documentation of the &#39;REQUEST_FINGERPRINTER_IMPLEMENTATION&#39; setting for information on how to handle this deprecation.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mengambil dan Membaca data CSV yang bernama news.csv</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataNews</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;news.csv&#39;</span><span class="p">)</span>
+<span class="n">dataNews</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="n">e1a3d7c03a59</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dataNews</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;news.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dataNews</span>
+
+<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>PyPDF2 adalah pustaka PDF python murni gratis dan open-source yang mampu memisahkan, menggabungkan , memotong, dan mengubah halaman file PDF.</p>
+<p>Install PyPDF2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install PyPDF2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: PyPDF2 in /usr/local/lib/python3.7/dist-packages (2.11.1)
+Requirement already satisfied: typing-extensions&gt;=3.10.0.0 in /usr/local/lib/python3.7/dist-packages (from PyPDF2) (4.1.1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">PyPDF2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Membaca Pdf dari file lalu dibuat menjadi bentuk document Text</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdfReader</span> <span class="o">=</span> <span class="n">PyPDF2</span><span class="o">.</span><span class="n">PdfFileReader</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/webmining/news.pdf&#39;</span><span class="p">)</span>
+<span class="n">pageObj</span> <span class="o">=</span> <span class="n">pdfReader</span><span class="o">.</span><span class="n">getPage</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">document</span> <span class="o">=</span> <span class="n">pageObj</span><span class="o">.</span><span class="n">extractText</span><span class="p">()</span>
+<span class="n">document</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;news\nTEMPO.CO,\nJakarta -\nPresiden Joko\nWidodo atau\nJokowi\ndipastikan\nbakal melantik\nKepala\nSekretariat\nPresiden Heru\nBudi Hartono\nmenjadi\nPenjabat atau\nPj Gubernur\nDKI Jakarta\npada Senin\npekan depan,\n17 Oktober\n2022. Heru\nbakal dilantik\nmenggantikan\nAnies\nBaswedan\nyang lengser\nsebagai\nGubernur DKI\nJakarta pada\n16 Oktober\n2022. \n&quot;Iya betul\n(dilantik 17\nOktober),&quot; ujar\nHeru saat\ndihubungi,\nSelasa, 11\nOktober\n2022. \nSebelumnya,\nKepala Pusat\nPenerangan\n(Kapuspen)\nKementerian\nDalam Negeri\n(Kemendagri)\nBenni Irwan\nmengatakan\nsidang Tim\nPenilai Akhir\n(TPA) untuk\nmemilih Pj\nGubernur\nDKI Jakarta\nberlangsung\npada Jumat, 7\nOktober 2022.\nSidang itu\nmenentukan\nsatu nama\ndari tiga Pj\nGubernur.&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>PunktSentenceTokenizer adalah Sebuah tokenizer kalimat yang menggunakan algoritma tanpa pengawasan untuk membangun model untuk kata-kata singkatan, kolokasi, dan kata-kata yang memulai kalimat dan kemudian menggunakan model itu untuk menemukan batas kalimat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.tokenize.punkt</span> <span class="kn">import</span> <span class="n">PunktSentenceTokenizer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">document</span><span class="p">):</span>
+    <span class="c1"># Kita memecahnya menggunakan  PunktSentenceTokenizer</span>
+    <span class="n">doc_tokenizer</span> <span class="o">=</span> <span class="n">PunktSentenceTokenizer</span><span class="p">()</span>
+    <span class="c1"># sentences_list adalah daftar masing masing kalimat dari dokumen yang ada.</span>
+    <span class="n">sentences_list</span> <span class="o">=</span> <span class="n">doc_tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sentences_list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentences_list</span> <span class="o">=</span> <span class="n">tokenize</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+<span class="n">sentences_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;news\nTEMPO.CO,\nJakarta -\nPresiden Joko\nWidodo atau\nJokowi\ndipastikan\nbakal melantik\nKepala\nSekretariat\nPresiden Heru\nBudi Hartono\nmenjadi\nPenjabat atau\nPj Gubernur\nDKI Jakarta\npada Senin\npekan depan,\n17 Oktober\n2022.&#39;,
+ &#39;Heru\nbakal dilantik\nmenggantikan\nAnies\nBaswedan\nyang lengser\nsebagai\nGubernur DKI\nJakarta pada\n16 Oktober\n2022.&#39;,
+ &#39;&quot;Iya betul\n(dilantik 17\nOktober),&quot; ujar\nHeru saat\ndihubungi,\nSelasa, 11\nOktober\n2022.&#39;,
+ &#39;Sebelumnya,\nKepala Pusat\nPenerangan\n(Kapuspen)\nKementerian\nDalam Negeri\n(Kemendagri)\nBenni Irwan\nmengatakan\nsidang Tim\nPenilai Akhir\n(TPA) untuk\nmemilih Pj\nGubernur\nDKI Jakarta\nberlangsung\npada Jumat, 7\nOktober 2022.&#39;,
+ &#39;Sidang itu\nmenentukan\nsatu nama\ndari tiga Pj\nGubernur.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Merapikan data di atas sehingga lebih enak dibaca</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kal</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sentences_list</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Kalimat </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kal</span><span class="p">))</span>
+    <span class="n">kal</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kalimat 1
+news
+TEMPO.CO,
+Jakarta -
+Presiden Joko
+Widodo atau
+Jokowi
+dipastikan
+bakal melantik
+Kepala
+Sekretariat
+Presiden Heru
+Budi Hartono
+menjadi
+Penjabat atau
+Pj Gubernur
+DKI Jakarta
+pada Senin
+pekan depan,
+17 Oktober
+2022.
+
+Kalimat 2
+Heru
+bakal dilantik
+menggantikan
+Anies
+Baswedan
+yang lengser
+sebagai
+Gubernur DKI
+Jakarta pada
+16 Oktober
+2022.
+
+Kalimat 3
+&quot;Iya betul
+(dilantik 17
+Oktober),&quot; ujar
+Heru saat
+dihubungi,
+Selasa, 11
+Oktober
+2022.
+
+Kalimat 4
+Sebelumnya,
+Kepala Pusat
+Penerangan
+(Kapuspen)
+Kementerian
+Dalam Negeri
+(Kemendagri)
+Benni Irwan
+mengatakan
+sidang Tim
+Penilai Akhir
+(TPA) untuk
+memilih Pj
+Gubernur
+DKI Jakarta
+berlangsung
+pada Jumat, 7
+Oktober 2022.
+
+Kalimat 5
+Sidang itu
+menentukan
+satu nama
+dari tiga Pj
+Gubernur.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tokenizing adalah proses pemisahan teks menjadi potongan-potongan yang disebut sebagai token untuk kemudian di analisa. Kata, angka, simbol, tanda baca dan entitas penting lainnya dapat dianggap sebagai token.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span><span class="p">,</span> <span class="n">CountVectorizer</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
+<span class="n">cv_matrix</span><span class="o">=</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">sentences_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Menampilkan jumlah Kosa Kata dari Data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Banyaknya kosa kata = &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">((</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">())))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Banyaknya kosa kata =  70
+</pre></div>
+</div>
+</div>
+</div>
+<p>Menampilkan jumlah Kalimat dari Data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Banyaknya kalimat = &quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sentences_list</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Banyaknya kalimat =  5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Menampilkan Kosa Kata dari Data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;kosa kata = &quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kosa kata =  [&#39;11&#39; &#39;16&#39; &#39;17&#39; &#39;2022&#39; &#39;akhir&#39; &#39;anies&#39; &#39;atau&#39; &#39;bakal&#39; &#39;baswedan&#39; &#39;benni&#39;
+ &#39;berlangsung&#39; &#39;betul&#39; &#39;budi&#39; &#39;co&#39; &#39;dalam&#39; &#39;dari&#39; &#39;depan&#39; &#39;dihubungi&#39;
+ &#39;dilantik&#39; &#39;dipastikan&#39; &#39;dki&#39; &#39;gubernur&#39; &#39;hartono&#39; &#39;heru&#39; &#39;irwan&#39; &#39;itu&#39;
+ &#39;iya&#39; &#39;jakarta&#39; &#39;joko&#39; &#39;jokowi&#39; &#39;jumat&#39; &#39;kapuspen&#39; &#39;kemendagri&#39;
+ &#39;kementerian&#39; &#39;kepala&#39; &#39;lengser&#39; &#39;melantik&#39; &#39;memilih&#39; &#39;menentukan&#39;
+ &#39;mengatakan&#39; &#39;menggantikan&#39; &#39;menjadi&#39; &#39;nama&#39; &#39;negeri&#39; &#39;news&#39; &#39;oktober&#39;
+ &#39;pada&#39; &#39;pekan&#39; &#39;penerangan&#39; &#39;penilai&#39; &#39;penjabat&#39; &#39;pj&#39; &#39;presiden&#39; &#39;pusat&#39;
+ &#39;saat&#39; &#39;satu&#39; &#39;sebagai&#39; &#39;sebelumnya&#39; &#39;sekretariat&#39; &#39;selasa&#39; &#39;senin&#39;
+ &#39;sidang&#39; &#39;tempo&#39; &#39;tiga&#39; &#39;tim&#39; &#39;tpa&#39; &#39;ujar&#39; &#39;untuk&#39; &#39;widodo&#39; &#39;yang&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mengubah kumpulan dokumen mentah menjadi matriks fitur TF-IDF</span>
+<span class="n">normal_matrix</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">cv_matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normal_matrix</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.         0.         0.14610397 0.10202413 0.         0.
+  0.36218421 0.14610397 0.         0.         0.         0.
+  0.1810921  0.1810921  0.         0.         0.1810921  0.
+  0.         0.1810921  0.12127949 0.10202413 0.1810921  0.12127949
+  0.         0.         0.         0.24255898 0.1810921  0.1810921
+  0.         0.         0.         0.         0.14610397 0.
+  0.1810921  0.         0.         0.         0.         0.1810921
+  0.         0.         0.1810921  0.10202413 0.12127949 0.1810921
+  0.         0.         0.1810921  0.12127949 0.36218421 0.
+  0.         0.         0.         0.         0.1810921  0.
+  0.1810921  0.         0.1810921  0.         0.         0.
+  0.         0.         0.1810921  0.        ]
+ [0.         0.30085447 0.         0.16949616 0.         0.30085447
+  0.         0.24272749 0.30085447 0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.24272749 0.         0.20148574 0.16949616 0.         0.20148574
+  0.         0.         0.         0.20148574 0.         0.
+  0.         0.         0.         0.         0.         0.30085447
+  0.         0.         0.         0.         0.30085447 0.
+  0.         0.         0.         0.16949616 0.20148574 0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.30085447 0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.30085447]
+ [0.31102513 0.         0.25093312 0.17522614 0.         0.
+  0.         0.         0.         0.         0.         0.31102513
+  0.         0.         0.         0.         0.         0.31102513
+  0.25093312 0.         0.         0.         0.         0.20829716
+  0.         0.         0.31102513 0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.35045227 0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.31102513 0.         0.         0.         0.         0.31102513
+  0.         0.         0.         0.         0.         0.
+  0.31102513 0.         0.         0.        ]
+ [0.         0.         0.         0.11735077 0.20829678 0.
+  0.         0.         0.         0.20829678 0.20829678 0.
+  0.         0.         0.20829678 0.         0.         0.
+  0.         0.         0.13949878 0.11735077 0.         0.
+  0.20829678 0.         0.         0.13949878 0.         0.
+  0.20829678 0.20829678 0.20829678 0.20829678 0.16805253 0.
+  0.         0.20829678 0.         0.20829678 0.         0.
+  0.         0.20829678 0.         0.11735077 0.13949878 0.
+  0.20829678 0.20829678 0.         0.13949878 0.         0.20829678
+  0.         0.         0.         0.20829678 0.         0.
+  0.         0.16805253 0.         0.         0.20829678 0.20829678
+  0.         0.20829678 0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.36719    0.         0.
+  0.         0.         0.         0.20686844 0.         0.
+  0.         0.36719    0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.36719    0.         0.         0.
+  0.36719    0.         0.         0.         0.         0.
+  0.         0.         0.         0.24591142 0.         0.
+  0.         0.36719    0.         0.         0.         0.
+  0.         0.29624658 0.         0.36719    0.         0.
+  0.         0.         0.         0.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Menampilkan Jumlah Kalimat dan Kosa Kata</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normal_matrix</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5, 70)
+</pre></div>
+</div>
+</div>
+</div>
+<p>NetworkX adalah paket Python untuk pembuatan, manipulasi, dan studi tentang struktur, dinamika, dan fungsi jaringan yang kompleks. Ini menyediakan:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Graph adalah kumpulan dati titik (node) dan garis dimana pasangan – pasangan titik (node) tersebut dihubungkan oleh segmen garis. Node ini biasa disebut simpul (vertex) dan segmen garis disebut ruas (edge)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_graph</span> <span class="o">=</span> <span class="n">normal_matrix</span> <span class="o">*</span> <span class="n">normal_matrix</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res_graph</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  (0, 2)	0.11555638149236828
+  (0, 1)	0.20952198781058418
+  (0, 4)	0.05092958582371007
+  (0, 3)	0.1450626820681297
+  (0, 0)	1.0000000000000002
+  (1, 4)	0.03506340622306105
+  (1, 2)	0.1919777442329807
+  (1, 3)	0.1439925634396477
+  (1, 0)	0.20952198781058418
+  (1, 1)	1.0
+  (2, 3)	0.06168876768739075
+  (2, 1)	0.1919777442329807
+  (2, 0)	0.11555638149236828
+  (2, 2)	0.9999999999999997
+  (3, 2)	0.06168876768739075
+  (3, 1)	0.1439925634396477
+  (3, 0)	0.1450626820681297
+  (3, 4)	0.10836550400289105
+  (3, 3)	1.0000000000000004
+  (4, 1)	0.03506340622306105
+  (4, 0)	0.05092958582371007
+  (4, 3)	0.10836550400289105
+  (4, 4)	0.9999999999999996
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_scipy_sparse_matrix</span><span class="p">(</span><span class="n">res_graph</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw_circular</span><span class="p">(</span><span class="n">nx_graph</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_35_0.png" src="_images/notebooks_35_0.png" />
+</div>
+</div>
+<p>Jumlah Banyak Sisi</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Banyaknya sisi </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nx_graph</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Banyaknya sisi 14
+</pre></div>
+</div>
+</div>
+</div>
+<p>Menkalikan data dengan data Transpose</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_graph</span> <span class="o">=</span> <span class="n">normal_matrix</span> <span class="o">*</span> <span class="n">normal_matrix</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>PageRank menghitung peringkat node dalam grafik G berdasarkan struktur tautan masuk. Awalnya dirancang sebagai algoritma untuk menentukan peringkat halaman web.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ranks</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">nx_graph</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>memasukkan data ke array</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arrRank</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ranks</span><span class="p">:</span>
+    <span class="n">arrRank</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ranks</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>menjadikan data kedalam bentuk tabel lalu digabungkan</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfRanks</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">arrRank</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PageRank&#39;</span><span class="p">])</span>
+<span class="n">dfSentence</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sentences_list</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;News&#39;</span><span class="p">])</span>
+<span class="n">dfJoin</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dfSentence</span><span class="p">,</span><span class="n">dfRanks</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dfJoin</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-03082c76-4a3d-49a7-95e4-e4253bae4ca3">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>News</th>
+      <th>PageRank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>news\nTEMPO.CO,\nJakarta -\nPresiden Joko\nWid...</td>
+      <td>0.207809</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Heru\nbakal dilantik\nmenggantikan\nAnies\nBas...</td>
+      <td>0.213826</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>"Iya betul\n(dilantik 17\nOktober)," ujar\nHer...</td>
+      <td>0.191981</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sebelumnya,\nKepala Pusat\nPenerangan\n(Kapusp...</td>
+      <td>0.203315</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sidang itu\nmenentukan\nsatu nama\ndari tiga P...</td>
+      <td>0.183068</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-03082c76-4a3d-49a7-95e4-e4253bae4ca3')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-03082c76-4a3d-49a7-95e4-e4253bae4ca3 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-03082c76-4a3d-49a7-95e4-e4253bae4ca3');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<p>Mengurutkan data berdasarkan hasil tertinggi</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sortSentence</span><span class="o">=</span><span class="n">dfJoin</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PageRank&#39;</span><span class="p">],</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sortSentence</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-d56cba66-80da-4565-ab7f-dac29b6a6608">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>News</th>
+      <th>PageRank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Heru\nbakal dilantik\nmenggantikan\nAnies\nBas...</td>
+      <td>0.213826</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>news\nTEMPO.CO,\nJakarta -\nPresiden Joko\nWid...</td>
+      <td>0.207809</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sebelumnya,\nKepala Pusat\nPenerangan\n(Kapusp...</td>
+      <td>0.203315</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>"Iya betul\n(dilantik 17\nOktober)," ujar\nHer...</td>
+      <td>0.191981</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sidang itu\nmenentukan\nsatu nama\ndari tiga P...</td>
+      <td>0.183068</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-d56cba66-80da-4565-ab7f-dac29b6a6608')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-d56cba66-80da-4565-ab7f-dac29b6a6608 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-d56cba66-80da-4565-ab7f-dac29b6a6608');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<p>Menampilkan data dari 5 ke atas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sortSentence</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-22f3a208-e897-4dc1-9fa0-c7d31b02d97d">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>News</th>
+      <th>PageRank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Heru\nbakal dilantik\nmenggantikan\nAnies\nBas...</td>
+      <td>0.213826</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>news\nTEMPO.CO,\nJakarta -\nPresiden Joko\nWid...</td>
+      <td>0.207809</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sebelumnya,\nKepala Pusat\nPenerangan\n(Kapusp...</td>
+      <td>0.203315</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>"Iya betul\n(dilantik 17\nOktober)," ujar\nHer...</td>
+      <td>0.191981</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sidang itu\nmenentukan\nsatu nama\ndari tiga P...</td>
+      <td>0.183068</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-22f3a208-e897-4dc1-9fa0-c7d31b02d97d')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-22f3a208-e897-4dc1-9fa0-c7d31b02d97d button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-22f3a208-e897-4dc1-9fa0-c7d31b02d97d');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<p><strong>Latent Semantic Indexing(LSI) Topik Berita</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install nltk
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: nltk in /usr/local/lib/python3.7/dist-packages (3.7)
+Requirement already satisfied: regex&gt;=2021.8.3 in /usr/local/lib/python3.7/dist-packages (from nltk) (2022.6.2)
+Requirement already satisfied: tqdm in /usr/local/lib/python3.7/dist-packages (from nltk) (4.64.1)
+Requirement already satisfied: joblib in /usr/local/lib/python3.7/dist-packages (from nltk) (1.2.0)
+Requirement already satisfied: click in /usr/local/lib/python3.7/dist-packages (from nltk) (7.1.2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install PySastrawi
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: PySastrawi in /usr/local/lib/python3.7/dist-packages (1.2.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install Sastrawi
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: Sastrawi in /usr/local/lib/python3.7/dist-packages (1.0.1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">PyPDF2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdfReader</span> <span class="o">=</span> <span class="n">PyPDF2</span><span class="o">.</span><span class="n">PdfFileReader</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/webmining/news.pdf&#39;</span><span class="p">)</span>
+<span class="n">pageObj</span> <span class="o">=</span> <span class="n">pdfReader</span><span class="o">.</span><span class="n">getPage</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">document</span> <span class="o">=</span> <span class="n">pageObj</span><span class="o">.</span><span class="n">extractText</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>news
+TEMPO.CO,
+Jakarta -
+Presiden Joko
+Widodo atau
+Jokowi
+dipastikan
+bakal melantik
+Kepala
+Sekretariat
+Presiden Heru
+Budi Hartono
+menjadi
+Penjabat atau
+Pj Gubernur
+DKI Jakarta
+pada Senin
+pekan depan,
+17 Oktober
+2022. Heru
+bakal dilantik
+menggantikan
+Anies
+Baswedan
+yang lengser
+sebagai
+Gubernur DKI
+Jakarta pada
+16 Oktober
+2022. 
+&quot;Iya betul
+(dilantik 17
+Oktober),&quot; ujar
+Heru saat
+dihubungi,
+Selasa, 11
+Oktober
+2022. 
+Sebelumnya,
+Kepala Pusat
+Penerangan
+(Kapuspen)
+Kementerian
+Dalam Negeri
+(Kemendagri)
+Benni Irwan
+mengatakan
+sidang Tim
+Penilai Akhir
+(TPA) untuk
+memilih Pj
+Gubernur
+DKI Jakarta
+berlangsung
+pada Jumat, 7
+Oktober 2022.
+Sidang itu
+menentukan
+satu nama
+dari tiga Pj
+Gubernur.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_tokens</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;news&#39;, &#39;TEMPO.CO&#39;, &#39;,&#39;, &#39;Jakarta&#39;, &#39;-&#39;, &#39;Presiden&#39;, &#39;Joko&#39;, &#39;Widodo&#39;, &#39;atau&#39;, &#39;Jokowi&#39;, &#39;dipastikan&#39;, &#39;bakal&#39;, &#39;melantik&#39;, &#39;Kepala&#39;, &#39;Sekretariat&#39;, &#39;Presiden&#39;, &#39;Heru&#39;, &#39;Budi&#39;, &#39;Hartono&#39;, &#39;menjadi&#39;, &#39;Penjabat&#39;, &#39;atau&#39;, &#39;Pj&#39;, &#39;Gubernur&#39;, &#39;DKI&#39;, &#39;Jakarta&#39;, &#39;pada&#39;, &#39;Senin&#39;, &#39;pekan&#39;, &#39;depan&#39;, &#39;,&#39;, &#39;17&#39;, &#39;Oktober&#39;, &#39;2022&#39;, &#39;.&#39;, &#39;Heru&#39;, &#39;bakal&#39;, &#39;dilantik&#39;, &#39;menggantikan&#39;, &#39;Anies&#39;, &#39;Baswedan&#39;, &#39;yang&#39;, &#39;lengser&#39;, &#39;sebagai&#39;, &#39;Gubernur&#39;, &#39;DKI&#39;, &#39;Jakarta&#39;, &#39;pada&#39;, &#39;16&#39;, &#39;Oktober&#39;, &#39;2022&#39;, &#39;.&#39;, &#39;``&#39;, &#39;Iya&#39;, &#39;betul&#39;, &#39;(&#39;, &#39;dilantik&#39;, &#39;17&#39;, &#39;Oktober&#39;, &#39;)&#39;, &#39;,&#39;, &quot;&#39;&#39;&quot;, &#39;ujar&#39;, &#39;Heru&#39;, &#39;saat&#39;, &#39;dihubungi&#39;, &#39;,&#39;, &#39;Selasa&#39;, &#39;,&#39;, &#39;11&#39;, &#39;Oktober&#39;, &#39;2022&#39;, &#39;.&#39;, &#39;Sebelumnya&#39;, &#39;,&#39;, &#39;Kepala&#39;, &#39;Pusat&#39;, &#39;Penerangan&#39;, &#39;(&#39;, &#39;Kapuspen&#39;, &#39;)&#39;, &#39;Kementerian&#39;, &#39;Dalam&#39;, &#39;Negeri&#39;, &#39;(&#39;, &#39;Kemendagri&#39;, &#39;)&#39;, &#39;Benni&#39;, &#39;Irwan&#39;, &#39;mengatakan&#39;, &#39;sidang&#39;, &#39;Tim&#39;, &#39;Penilai&#39;, &#39;Akhir&#39;, &#39;(&#39;, &#39;TPA&#39;, &#39;)&#39;, &#39;untuk&#39;, &#39;memilih&#39;, &#39;Pj&#39;, &#39;Gubernur&#39;, &#39;DKI&#39;, &#39;Jakarta&#39;, &#39;berlangsung&#39;, &#39;pada&#39;, &#39;Jumat&#39;, &#39;,&#39;, &#39;7&#39;, &#39;Oktober&#39;, &#39;2022&#39;, &#39;.&#39;, &#39;Sidang&#39;, &#39;itu&#39;, &#39;menentukan&#39;, &#39;satu&#39;, &#39;nama&#39;, &#39;dari&#39;, &#39;tiga&#39;, &#39;Pj&#39;, &#39;Gubernur&#39;, &#39;.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">RegexpTokenizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">))</span>
+<span class="n">word_tokens_no_stopwords</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">word_tokens</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_tokens_no_stopwords</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;news&#39;, &#39;TEMPO.CO&#39;, &#39;,&#39;, &#39;Jakarta&#39;, &#39;-&#39;, &#39;Presiden&#39;, &#39;Joko&#39;, &#39;Widodo&#39;, &#39;Jokowi&#39;, &#39;melantik&#39;, &#39;Kepala&#39;, &#39;Sekretariat&#39;, &#39;Presiden&#39;, &#39;Heru&#39;, &#39;Budi&#39;, &#39;Hartono&#39;, &#39;Penjabat&#39;, &#39;Pj&#39;, &#39;Gubernur&#39;, &#39;DKI&#39;, &#39;Jakarta&#39;, &#39;Senin&#39;, &#39;pekan&#39;, &#39;,&#39;, &#39;17&#39;, &#39;Oktober&#39;, &#39;2022&#39;, &#39;.&#39;, &#39;Heru&#39;, &#39;dilantik&#39;, &#39;menggantikan&#39;, &#39;Anies&#39;, &#39;Baswedan&#39;, &#39;lengser&#39;, &#39;Gubernur&#39;, &#39;DKI&#39;, &#39;Jakarta&#39;, &#39;16&#39;, &#39;Oktober&#39;, &#39;2022&#39;, &#39;.&#39;, &#39;``&#39;, &#39;Iya&#39;, &#39;(&#39;, &#39;dilantik&#39;, &#39;17&#39;, &#39;Oktober&#39;, &#39;)&#39;, &#39;,&#39;, &quot;&#39;&#39;&quot;, &#39;Heru&#39;, &#39;dihubungi&#39;, &#39;,&#39;, &#39;Selasa&#39;, &#39;,&#39;, &#39;11&#39;, &#39;Oktober&#39;, &#39;2022&#39;, &#39;.&#39;, &#39;Sebelumnya&#39;, &#39;,&#39;, &#39;Kepala&#39;, &#39;Pusat&#39;, &#39;Penerangan&#39;, &#39;(&#39;, &#39;Kapuspen&#39;, &#39;)&#39;, &#39;Kementerian&#39;, &#39;Dalam&#39;, &#39;Negeri&#39;, &#39;(&#39;, &#39;Kemendagri&#39;, &#39;)&#39;, &#39;Benni&#39;, &#39;Irwan&#39;, &#39;sidang&#39;, &#39;Tim&#39;, &#39;Penilai&#39;, &#39;Akhir&#39;, &#39;(&#39;, &#39;TPA&#39;, &#39;)&#39;, &#39;memilih&#39;, &#39;Pj&#39;, &#39;Gubernur&#39;, &#39;DKI&#39;, &#39;Jakarta&#39;, &#39;Jumat&#39;, &#39;,&#39;, &#39;7&#39;, &#39;Oktober&#39;, &#39;2022&#39;, &#39;.&#39;, &#39;Sidang&#39;, &#39;menentukan&#39;, &#39;nama&#39;, &#39;Pj&#39;, &#39;Gubernur&#39;, &#39;.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vectorize document using TF-IDF</span>
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">lowercase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">ngram_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Fit and Transform the documents</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">word_tokens_no_stopwords</span><span class="p">)</span>
+<span class="n">train_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;99x52 sparse matrix of type &#39;&lt;class &#39;numpy.float64&#39;&gt;&#39;
+	with 76 stored elements in Compressed Sparse Row format&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_components</span><span class="o">=</span><span class="mi">10</span>
+
+<span class="c1"># Create SVD object</span>
+<span class="n">lsa</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">num_components</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Fit SVD model on data</span>
+<span class="n">lsa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
+
+<span class="c1"># Get Singular values and Components </span>
+<span class="n">Sigma</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">singular_values_</span> 
+<span class="n">V_transpose</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span>
+<span class="n">V_transpose</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.54768422e-18,  6.13913989e-20, -7.35656577e-17,
+        -5.79080962e-17, -1.03651900e-17, -1.05318493e-17,
+         5.52876714e-17,  5.63670755e-16,  5.72122203e-17,
+        -1.22108164e-16],
+       [ 1.58810786e-18,  2.34849695e-18,  5.83143128e-17,
+        -2.98313868e-17,  8.84490156e-18, -6.42187831e-18,
+        -6.00152423e-17, -6.51240813e-17, -3.78483149e-17,
+        -1.88545282e-17],
+       [-4.37828551e-28,  1.53368021e-18,  2.04422923e-17,
+        -1.95479962e-17,  9.02170182e-16,  5.48643913e-18,
+        -8.49688252e-17,  1.47723455e-01,  6.07273246e-01,
+         7.80405734e-01],
+       [-2.08461408e-25,  4.92237581e-01,  6.02545412e-01,
+        -6.28204735e-01, -4.97273433e-16,  2.22426983e-14,
+         1.44308996e-14,  1.84471836e-17,  1.69345109e-16,
+        -2.12943226e-16],
+       [-3.23480922e-19, -5.74790516e-18,  5.70271145e-18,
+         5.25358634e-17, -8.45904011e-18, -9.31230269e-17,
+        -6.19169989e-17, -4.20666636e-16,  1.92224101e-17,
+        -7.12368666e-17],
+       [ 9.75126299e-19,  4.92158929e-18,  4.02411193e-17,
+        -1.60026509e-17, -1.41891250e-17, -4.34567093e-17,
+        -7.53208536e-17, -2.14141874e-16,  8.79614721e-18,
+        -7.08184908e-19],
+       [ 4.46396213e-18, -1.15449459e-18,  8.95913404e-17,
+        -4.04398521e-17,  9.16633747e-18, -1.25126452e-17,
+        -1.04041273e-17,  1.11036739e-15, -2.95279427e-17,
+         7.41309367e-17],
+       [ 1.36783519e-18, -2.86630586e-19,  1.14010900e-17,
+         9.41878626e-17,  4.75814459e-17,  9.58950778e-19,
+         4.66729371e-18,  8.60190120e-16, -4.65509283e-17,
+        -5.39750603e-17],
+       [-7.39291491e-18,  5.36349847e-18, -1.98520986e-16,
+        -1.76712325e-16,  2.51996011e-18,  1.22289832e-17,
+         8.80511972e-17, -1.06134852e-15,  4.81012182e-17,
+         8.87786525e-18],
+       [-1.66770019e-18,  1.04153090e-17, -2.45102944e-17,
+        -7.12041512e-17,  4.10477700e-18,  2.36340933e-18,
+        -3.74472797e-18, -4.26168677e-16,  4.19841754e-17,
+        -1.53313948e-16],
+       [-3.98902801e-18, -1.05699903e-17, -1.21136175e-16,
+        -9.05160654e-17,  1.89167344e-17, -1.18904787e-18,
+         2.07569680e-17, -2.17688306e-16, -2.92893348e-17,
+         2.88905162e-17],
+       [ 2.09619927e-18, -9.28871794e-19,  4.17805662e-17,
+        -8.78669125e-17,  5.09722924e-19, -1.18382031e-17,
+        -1.73521442e-17,  3.04122223e-16, -3.84293115e-17,
+         1.06376519e-16],
+       [ 1.26847467e-28, -6.26956947e-19, -6.99880182e-18,
+         4.50599278e-16,  2.08071103e-15, -1.63540641e-17,
+         8.27388348e-17, -2.56466923e-01,  3.33222372e-02,
+         5.13413890e-04],
+       [-7.24070056e-25,  3.01619749e-14,  4.64419880e-15,
+        -9.91637602e-16,  6.93612847e-01, -7.00896901e-01,
+        -1.66267115e-01,  1.85286931e-16, -2.73773440e-17,
+        -7.90698970e-16],
+       [ 1.62866169e-25, -1.16612078e-01,  7.60833429e-01,
+         6.38383989e-01,  4.05741254e-16, -5.02192560e-15,
+         1.88034216e-14, -3.16350959e-17, -2.61436487e-16,
+         1.33087829e-16],
+       [-2.25725612e-18, -1.90111724e-19, -2.08892863e-17,
+         2.92607648e-17, -4.40459125e-17,  1.05256524e-17,
+        -6.86403738e-17, -9.70288737e-16,  6.77310388e-18,
+         1.07481049e-16],
+       [ 7.57682215e-26, -3.15621284e-15, -2.31524122e-14,
+        -6.38603605e-16,  3.01958468e-01,  7.33433341e-02,
+         9.50495575e-01, -5.91465039e-17,  1.75617865e-17,
+        -2.69906110e-16],
+       [ 5.88645969e-19,  4.44529418e-18,  6.03477305e-17,
+         5.00416009e-17, -3.37016877e-17, -2.90793795e-18,
+        -4.48918375e-17, -1.17902409e-15,  1.36752648e-17,
+        -7.57384779e-17],
+       [ 2.40514032e-18,  1.15709887e-17,  1.44352115e-16,
+         4.96268156e-17, -4.09145743e-17,  4.80404366e-18,
+        -2.69163441e-17, -1.98161557e-15, -5.30915475e-18,
+        -5.04336404e-17],
+       [-5.36038796e-25,  8.62614506e-01, -2.40980331e-01,
+         4.44774879e-01,  3.38611281e-16,  3.65158341e-14,
+        -5.69283845e-15, -1.66805600e-17, -1.46211747e-16,
+         1.26320576e-16],
+       [ 4.39913161e-18, -1.09033818e-17,  1.27448293e-16,
+         1.98730257e-16,  1.05700999e-17,  1.17742286e-17,
+        -7.08552813e-17,  8.70700079e-16, -3.09753600e-17,
+         1.06271260e-16],
+       [-9.94272131e-19,  1.08016089e-17, -1.07231179e-16,
+         2.95607571e-17,  5.81117311e-17,  5.91908083e-18,
+        -7.33640930e-17,  2.42345226e-15,  2.20072614e-17,
+        -5.60845460e-17],
+       [ 4.88220509e-18,  3.21603941e-18,  1.28913655e-16,
+         1.46897612e-16, -8.52355834e-18, -1.26424285e-17,
+        -4.61028168e-17,  6.48381445e-16,  3.51104021e-17,
+        -1.85293630e-16],
+       [ 1.21342860e-17,  1.93969678e-18,  3.56513985e-16,
+         1.53074441e-16,  1.23672270e-17, -5.12709178e-18,
+         3.66357009e-17,  4.06520223e-16, -4.57810544e-17,
+        -7.21792032e-17],
+       [ 2.27854298e-19, -8.10284462e-18, -1.15698705e-17,
+         5.74043951e-18, -4.99547355e-18, -5.92420448e-18,
+        -7.71706866e-17,  5.23880522e-16, -5.23966306e-17,
+         2.46395538e-16],
+       [ 1.99955630e-18,  6.39732377e-18,  4.94346177e-17,
+        -9.00284022e-18,  3.83609788e-17, -7.29762566e-18,
+         7.54533722e-17, -1.69874330e-16, -1.57325511e-17,
+        -1.42856797e-16],
+       [-1.12106822e-28,  5.54073091e-19,  6.17537427e-18,
+         5.78560724e-16, -1.03222819e-15, -2.21771083e-17,
+        -4.34315082e-16, -3.61179171e-01,  7.04187556e-01,
+        -4.73695101e-01],
+       [ 2.21561589e-18, -2.68817074e-18,  6.85555331e-17,
+         8.12499767e-17, -3.96131115e-17, -4.74513537e-18,
+        -4.13294931e-17,  2.77620253e-16,  3.67921855e-17,
+        -3.86071796e-17],
+       [-2.89362960e-18,  1.52134315e-17, -4.98588102e-17,
+         3.37486377e-18, -1.55110445e-17, -5.98480371e-18,
+         1.34744249e-17, -1.34604351e-15,  8.04221312e-17,
+        -3.20170451e-16],
+       [-1.39036567e-18,  4.01174750e-18, -4.36681952e-17,
+         3.40522237e-17,  5.84170337e-18,  8.26645124e-18,
+        -6.03865026e-17,  3.56773963e-16,  2.79351383e-17,
+        -5.36717504e-17],
+       [ 3.05162238e-18,  1.83912358e-18,  1.34433888e-16,
+         5.39989440e-17, -1.93258918e-17,  9.33819802e-18,
+        -1.98212299e-17, -9.54169755e-16, -3.33233435e-17,
+         7.54114024e-17],
+       [-1.23230922e-18,  2.83503290e-18, -5.81594427e-17,
+         3.14983641e-17, -1.61446968e-17, -7.03340987e-18,
+        -3.80410376e-17,  6.80280922e-16,  5.99094907e-17,
+        -1.06234837e-16],
+       [-2.55472255e-18, -1.95921272e-18, -2.38185749e-17,
+        -9.42321468e-18,  1.69591478e-17,  1.02656072e-17,
+        -3.98973912e-17, -1.65501572e-15, -8.36129961e-17,
+         1.68594368e-16],
+       [ 2.08322303e-18, -1.78695561e-18,  7.84496836e-17,
+         2.49681868e-18, -4.08318362e-18, -4.87101276e-19,
+         1.02198425e-16, -4.88731190e-16,  2.08007498e-17,
+        -1.56793031e-16],
+       [ 7.58716206e-18, -5.74997363e-18,  2.20166827e-16,
+         1.48876924e-16,  1.18436624e-17, -3.59978195e-18,
+        -4.99150052e-17,  4.63147173e-16, -6.52693388e-17,
+         8.40307721e-17],
+       [ 1.00000000e+00,  4.53062699e-26, -6.20011726e-26,
+         2.55339647e-26, -9.52116964e-35, -1.03306214e-24,
+         1.57535400e-33,  4.91437953e-28,  3.66497089e-27,
+         3.46242969e-27],
+       [ 6.14105604e-18,  2.63074932e-18,  2.19124520e-16,
+         3.83816399e-17, -2.14723623e-17,  6.41177984e-18,
+         5.92750064e-17, -8.96566422e-16, -5.76084249e-17,
+         1.43907344e-16],
+       [-7.95572391e-19, -4.72063168e-19, -6.59314754e-17,
+         9.38127920e-18, -3.18322837e-17,  1.20130073e-18,
+        -2.61898357e-17,  1.62145768e-15,  6.64244603e-17,
+         5.16727810e-17],
+       [-6.13624467e-18, -8.12700259e-19, -1.52774009e-16,
+        -6.47368295e-17,  6.22994270e-19,  1.34632356e-17,
+        -4.41203434e-17, -7.34626021e-16,  1.88056445e-17,
+        -1.23976705e-17],
+       [-1.33046413e-18,  1.50241121e-19, -1.86409349e-17,
+        -4.69989057e-17, -1.86119208e-17,  7.08553159e-18,
+         6.64284214e-17, -6.11494165e-16,  2.46819646e-18,
+         6.51379911e-17],
+       [ 7.32938693e-25, -3.05314082e-14,  5.88824323e-15,
+         1.77667132e-16,  6.54004818e-01,  7.09481705e-01,
+        -2.62513633e-01,  1.72739159e-16, -2.28156500e-17,
+        -7.64758421e-16],
+       [-4.50598829e-29,  2.22701165e-19,  2.48375508e-18,
+         1.87168546e-16, -5.69844549e-16,  2.55753973e-17,
+         8.82801322e-16,  3.52304173e-01,  3.62026764e-01,
+        -3.56975302e-01],
+       [-1.78214635e-18,  1.01113862e-17, -4.52623818e-17,
+        -6.65387253e-18, -3.91681861e-18,  6.04731109e-18,
+        -1.44895801e-17, -1.32704270e-16,  4.81510931e-17,
+        -1.27830714e-16],
+       [ 7.28648705e-19, -1.57735390e-17, -1.97215426e-17,
+        -3.09854201e-17,  2.86990961e-17,  2.18555818e-18,
+         4.10164114e-17,  1.25236523e-15, -5.43713621e-17,
+         2.19959978e-16],
+       [ 4.29002361e-18,  4.37110445e-19,  1.47254948e-16,
+         1.76498102e-17,  1.51846029e-17,  4.54682361e-18,
+         8.43909022e-19, -5.05886014e-16, -6.46033790e-17,
+         7.52690146e-17],
+       [ 1.56203822e-18, -4.48979286e-18,  1.35078348e-17,
+         4.24578283e-17,  2.49958263e-17,  3.61798633e-18,
+        -2.44629410e-17,  1.19590921e-15, -1.45186470e-17,
+         5.62168591e-17],
+       [ 3.66378027e-18, -7.80083088e-18,  9.45966112e-17,
+        -2.89750122e-17,  1.47161201e-17, -1.34425321e-17,
+         4.28410625e-17, -3.26939625e-17, -9.09439490e-17,
+         1.98136760e-16],
+       [ 1.98201619e-29, -9.79733674e-20, -1.09472785e-18,
+         4.41205024e-16,  8.69285629e-17, -1.27920216e-17,
+        -3.26924044e-16,  8.11069587e-01,  5.62613715e-02,
+        -1.97859069e-01],
+       [-1.66770019e-18,  1.04153090e-17, -2.45102944e-17,
+        -7.12041512e-17,  4.10477700e-18,  2.36340933e-18,
+        -3.74472797e-18, -4.36350469e-16,  3.30253283e-17,
+        -1.38956811e-16],
+       [ 1.51680158e-18, -3.71226677e-18, -2.56361347e-18,
+         4.28156198e-17,  2.31024353e-17, -2.15170341e-18,
+         6.44372273e-17,  1.43019390e-15,  2.05137729e-17,
+        -4.84173254e-17],
+       [-7.79878017e-18,  5.48705191e-18, -1.86767934e-16,
+        -1.80206994e-16,  2.38927747e-17,  1.48226622e-17,
+         1.35716721e-17, -1.76283852e-15, -4.26611311e-17,
+         1.06252693e-16],
+       [-1.49540488e-18,  9.62143593e-18, -6.20431964e-17,
+        -1.10694831e-16,  3.44631847e-17,  9.01666120e-18,
+         2.17348298e-17,  4.03461812e-16, -1.14731977e-17,
+        -2.13942004e-17]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the topics with their terms</span>
+<span class="n">terms</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">component</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lsa</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
+    <span class="n">zipped</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">terms</span><span class="p">,</span> <span class="n">component</span><span class="p">)</span>
+    <span class="n">top_terms_key</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">zipped</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">top_terms_list</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">top_terms_key</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Topic &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="p">,</span><span class="n">top_terms_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 1:  [&#39;oktober&#39;, &#39;kapuspen&#39;, &#39;news&#39;, &#39;pekan&#39;, &#39;jumat&#39;]
+Topic 2:  [&#39;jakarta&#39;, &#39;2022&#39;, &#39;dki&#39;, &#39;melantik&#39;, &#39;iya&#39;]
+Topic 3:  [&#39;gubernur&#39;, &#39;2022&#39;, &#39;pj&#39;, &#39;dki&#39;, &#39;kapuspen&#39;]
+Topic 4:  [&#39;gubernur&#39;, &#39;jakarta&#39;, &#39;kepala&#39;, &#39;dilantik&#39;, &#39;sidang&#39;]
+Topic 5:  [&#39;dki&#39;, &#39;pj&#39;, &#39;heru&#39;, &#39;dilantik&#39;, &#39;17&#39;]
+Topic 6:  [&#39;pj&#39;, &#39;heru&#39;, &#39;jakarta&#39;, &#39;2022&#39;, &#39;presiden&#39;]
+Topic 7:  [&#39;heru&#39;, &#39;gubernur&#39;, &#39;2022&#39;, &#39;presiden&#39;, &#39;negeri&#39;]
+Topic 8:  [&#39;sidang&#39;, &#39;presiden&#39;, &#39;17&#39;, &#39;jokowi&#39;, &#39;penerangan&#39;]
+Topic 9:  [&#39;kepala&#39;, &#39;17&#39;, &#39;presiden&#39;, &#39;sidang&#39;, &#39;dilantik&#39;]
+Topic 10:  [&#39;17&#39;, &#39;dilantik&#39;, &#39;kemendagri&#39;, &#39;sebelumnya&#39;, &#39;senin&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="markdown.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Markdown Files</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="markdown-notebooks.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
